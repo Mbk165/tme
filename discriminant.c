@@ -38,5 +38,9 @@ int main(){
     assert(discriminant(-7, 5, -1) == 0);
     assert(discriminant(4, 6, 1) == -0.0191 -1.309);
     assert(discriminant(4, 4, 1) == -0.5;
+    assert(afficheRacine(-7,5,1) == "le polynome n'a pas de racine réelle");
+    assert(afficheRacine(4,6,1) == "le polynome admet une racine double -0.5");
+    assert(afficheRacine(4,6,1) == "le polynome admet deux racine -0.0191 -1.309");
+    
     return 0;   
 }
