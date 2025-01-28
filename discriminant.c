@@ -18,7 +18,7 @@ float discriminant(int a, int b, int c) {
     }
 }
 
-int afficheRacines (int a, int b,int c){
+void afficheRacines (int a, int b,int c){
     int d = b * b - 4 * a * c;
     if (d<0){
         printf("le polynome n'a pas de racine réelle");
@@ -30,7 +30,6 @@ int afficheRacines (int a, int b,int c){
             printf("le polynome admet deux racine%f",discriminant(a,b,c));
         }
     }
-    return 0;
 }
 }
 
