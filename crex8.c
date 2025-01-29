@@ -9,8 +9,8 @@
 float prixEntree(int a, int e) {
     /*Hypotheses: */
     float prix;
-    if ((a>=2) && (e>=2)){
-        prix = TF + (a-2)*TA + (e-2)*TE;
+    if ((a>=2) && (e>=3)){
+        prix = TF + (a-2)*TA + (e-3)*TE;
     } 
     else{
         prix = a*TA + e*TE;
