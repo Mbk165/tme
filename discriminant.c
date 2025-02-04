@@ -2,44 +2,58 @@
 #include <assert.h>
 #include <math.h>
 
-float discriminant(int a, int b, int c) {
-    int d = b * b - 4 * a * c;
+int discriminant(int a, int b, int c) {
+    return (b * b) - 4 * a * c;
+}
+
+void afficheRacines(int a, int b, int c) {
     float res = 0;
     float res1 = 0;
+    int d = discriminant(a,b,c);
     if (d<0) {
-        return 0;
+        printf("Pas de racine reelle");
     } else if (d == 0) {
         res = -b / (2 * a);
+        printf("La racine double est %.2f", res);
     } else {
         res = (-b + sqrt(d)) / (2 * a);
         res1 = (-b - sqrt(d)) / (2 * a);
-        return res;
-        return res1;
+        printf("Les deux racines sont %.2f et %.2f",res,res1);
     }
 }
 
-void afficheRacines (int a, int b,int c){
-    int d = b * b - 4 * a * c;
-    if (d<0){
-        printf("le polynome n'a pas de racine réelle");
-    }else{
-        if (d=0){
-            printf("le polynome admet une racine double %f", discriminant(a,b,c));
-        }
+
+int signeProduit(int a, int b) {
+
+if (a*b == 0) 
+{ 
+return 0;
+}
+
+if (a*b<0) { 
+    return -1;
+}
+
+return 1;
+}
+
+
+#include <stdio.h>
+#define TFAMILLE 57.8
+#define TADULTE 22.7
+#define TENFANT 10.75
+
+float prixEntree(int a, int e){
+  
+    float prix;
+        if ((a>=2) && (e>=3)){
+            prix = TFAMILLE + (a-2)*TADULTE + (e-3)*TENFANT;
+        } 
         else{
-            printf("le polynome admet deux racine%f",discriminant(a,b,c));
+            prix = a*TADULTE + e*TENFANT;
         }
-    }
-}
-}
+        return prix;
 
-int main(){
-    assert(discriminant(-7, 5, -1) == 0);
-    assert(discriminant(4, 6, 1) == -0.0191 -1.309);
-    assert(discriminant(4, 4, 1) == -0.5;
-    assert(afficheRacine(-7,5,1) == "le polynome n'a pas de racine réelle");
-    assert(afficheRacine(4,6,1) == "le polynome admet une racine double -0.5");
-    assert(afficheRacine(4,6,1) == "le polynome admet deux racine -0.0191 -1.309");
-    
-    return 0;   
 }
+ 
+   
