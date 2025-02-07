@@ -4,30 +4,29 @@
 int jours(int nc, int ptotale, float pai){
     /*Hyp: 0<=pai<=100 */
     int c = 1;
-    float pourcent = (c / ptotale) * 100;
+    float pourcent = ((1.*c) / ptotale) * 100;
     int i = 0;
     while (pourcent <= pai){
         c = c + nc*c;
-        pourcent = (c / ptotale) * 100;
+        pourcent = ((1.*c) / ptotale) * 100;
         i++;
     }
-   
     //printf("nombre de jours pour que %.2f pourcent de la population soit contaminée = %d\n", pai, i);
     return i;
 }
 
 float pourcentage(int nc, int ptotale, int nj){
-    /*Hyp: */
-    int c = 1;
+int c = 1;
     float pourcent = ((1.*c) / ptotale)*100;
     int i = 1;
     while (i <= nj){
         c = c + nc*c;
         pourcent = ((1.*c) / ptotale)*100;
         i++;
+    } 
+    if (pourcent>=100){
+        pourcent = 100.00;
     }
-   
-    //printf("pourcentage population contaminée au bout de %d jours = %.2f \n", nj, pourcent);
     return pourcent;
 }
 
