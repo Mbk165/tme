@@ -3,8 +3,8 @@
 
 int echange(int *a,int *b){
     int c = *a;
-    int *a = *b;
-    int *b = c;
+    *a = *b;
+    *b = c;
     return *a,*b;
 }
 
@@ -12,25 +12,26 @@ int tri_croissant(int *a, int *b){
     if (*a > *b){
         return echange(a,b);
     } else{
-        return a b;
+        return *a; *b;
     }
 }
 
 int tri_3(int *a, int *b, int *c){
-    tri(a,b);
-    tri(b,c);
-    tri(a,c);
-    return *a *b *c;
+    tri_croissant(a,b);
+    tri_croissant(b,c);
+    tri_croissant(a,c);
+    return *a; *b; *c;
 }
 
 int main(){
-    int a, b, c;
+    int *a, *b, *c;
   
     printf("Saisissez les valeurs de a, b et c :\n");
     scanf("%d", &a);
     scanf("%d", &b);
     scanf("%d", &c);
     printf("Avant echange : a = %d, b = %d\n",a, b);
+    
     echange(a,b);
     printf("Apres echange : a = %d, b = %d\n",a, b);
     
