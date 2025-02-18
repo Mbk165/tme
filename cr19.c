@@ -7,39 +7,41 @@
 
 void min_max(int a, int *min, int *max) {
     /*min<=max*/
-    if (a < *min){
-        *min = a;
-    } else {
-        if ( a>*max){
+        if (a < *min){
+            *min = a;
+        } else if ( a>*max){
             *max = a;
         }
-    }
 }
 
-void stats (int v1, int v2, int v3, int v4, int *min, int *max, float *moy) {
-    if (v1<=0){
-        *min=-1;
-        *max=-1;
-        *moy=-1;
-    }else if ((v1>0) && (v2>0) && (v3>0) && (v4>0)) {
-        *moy=(1.*(v1+v2+v3+v4)) / 4;
-        min_max(v1,&v2,&v3);
-        min_max(v4,&v2,&v3);
-        *min= v2;
-        *max= v3;
-    }else if ((v1>0) && (v2>0) && (v3>0) && (v4<=0)) {
-        *moy= (1.*(v1+v2+v3)) / 3;
-        min_max(v1,&v2,&v3);
-        *min= v2;
-        *max= v3;  
-    }else  if ((v1>0) && (v2>0) && (v3<=0)){
-        *moy= (1.*(v1+v2))/2;
-        if(v1<v2){ *min = v1; *max=v2;}
-        else{ *min=v2; *max=v1;}
-    }else  if ((v1>0) && (v2<=0)){
-        *min=v1;
-        *max=v1;
-        *moy=v1;
+
+void stats(int v1, int v2, int v3, int v4, int *min, int *max, float *moy) {
+    if (v1 <= 0) {
+        *min = -1;
+        *max = -1;
+        *moy = -1;
+    } else if (v1 > 0 && v2 > 0 && v3 > 0 && v4 > 0) {
+        *moy = (v1 + v2 + v3 + v4) / 4.0;
+        *min = v1;
+        *max = v1;
+        min_max(v2, min, max);  // Ajout de & pour min et max
+        min_max(v3, min, max);  // Ajout de & pour min et max
+        min_max(v4,min, max);  // Ajout de & pour min et max
+    } else if (v1 > 0 && v2 > 0 && v3 > 0) {
+        *moy = (v1 + v2 + v3) / 3.0;
+        *min = v1;
+        *max = v1;
+        min_max(v2, min, max);  // Ajout de & pour min et max
+        min_max(v3, min, max);  // Ajout de & pour min et max
+    } else if (v1 > 0 && v2 > 0) {
+        *moy = (v1 + v2) / 2.0;
+        *min = v1;
+        *max = v1;
+        min_max(v2, min, max);  // Ajout de & pour min et max
+    } else {
+        *min = v1;
+        *max = v1;
+        *moy = v1;
     }
 }
 
@@ -66,4 +68,5 @@ int main() {
    stats(a,b,c,d, &min,&max,&moy);
    afficher_resultat(moy, min, max);
    return 0;
+    
 }
